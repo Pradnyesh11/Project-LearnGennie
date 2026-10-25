@@ -1,0 +1,377 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page
+    </title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!--poppins font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<style>
+  /* Custom CSS for the example panel */
+  .example-panel {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+  }
+  .example-panel.open {
+      display: block;
+  }
+  .example-panel h3 {
+      margin-bottom: 20px;
+  }
+  .example-panel pre {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+  }
+</style>
+
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+  <div class="container">
+      <!-- Brand/Logo -->
+      <a class="navbar-brand" href="#">
+          <img src="/img/learngennie_dark.png" alt="Codecademy Logo" class="logo">
+      </a>
+
+      <!-- Hamburger Menu Toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="navbar-nav ms-auto">
+              <a class="nav-link mx-3" href="authentication/home.html">Home</a>
+              <a class="nav-link mx-3" href="resources.html">Resources</a>
+              <a class="nav-link mx-3" href="courses.html">Courses</a>
+              <a class="nav-link mx-3" href="https://discord.gg/fvkHFPuP">Community</a>
+              <a class="nav-link mx-3" href="#">About Us</a>
+          </div>
+      </div>
+  </div>
+</nav>
+
+<main class="container my-5">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3 mb-4">
+      <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action" data-course="web-development">Web Development</a>
+        <a href="#" class="list-group-item list-group-item-action" data-course="ai-ml">AI & Machine Learning</a>
+        <a href="#" class="list-group-item list-group-item-action" data-course="cybersecurity">Cybersecurity</a>
+        <a href="#" class="list-group-item list-group-item-action" data-course="cloud-computing">Cloud Computing</a>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-9">
+      <h2>Cheatsheets</h2>
+      <br>
+      <div id="cheatsheets-container">
+        <!-- Web Development -->
+        <div id="web-development" class="course-cheatsheets">
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="card" data-examples="html-examples">
+                <div class="card-body">
+                  <h5 class="card-title">HTML Basics</h5>
+                  <p class="card-text">Tags, Attributes, and Structure.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="card" data-examples="css-examples">
+                <div class="card-body">
+                  <h5 class="card-title">CSS Basics</h5>
+                  <p class="card-text">Selectors, Box Model, and Flexbox.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI & Machine Learning -->
+        <div id="ai-ml" class="course-cheatsheets" style="display: none;">
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="card" data-examples="ml-examples">
+                <div class="card-body">
+                  <h5 class="card-title">Machine Learning</h5>
+                  <p class="card-text">Supervised vs Unsupervised Learning.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="card" data-examples="nn-examples">
+                <div class="card-body">
+                  <h5 class="card-title">Neural Networks</h5>
+                  <p class="card-text">Activation Functions and Backpropagation.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cybersecurity -->
+        <div id="cybersecurity" class="course-cheatsheets" style="display: none;">
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="card" data-examples="threats-examples">
+                <div class="card-body">
+                  <h5 class="card-title">Common Threats</h5>
+                  <p class="card-text">Phishing, Malware, and Ransomware.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="card" data-examples="encryption-examples">
+                <div class="card-body">
+                  <h5 class="card-title">Encryption Basics</h5>
+                  <p class="card-text">Symmetric vs Asymmetric Encryption.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cloud Computing -->
+        <div id="cloud-computing" class="course-cheatsheets" style="display: none;">
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="card" data-examples="cloud-models-examples">
+                <div class="card-body">
+                  <h5 class="card-title">Cloud Models</h5>
+                  <p class="card-text">IaaS, PaaS, and SaaS.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="card" data-examples="aws-examples">
+                <div class="card-body">
+                  <h5 class="card-title">AWS Basics</h5>
+                  <p class="card-text">EC2, S3, and RDS.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Example Panel -->
+      <div class="example-panel" id="examplePanel">
+        <h3 id="panelTitle">Examples</h3>
+        <div id="exampleContent"></div>
+    </div>
+    
+</main>
+<br><br><br>
+<!-- Footer -->
+<footer class="footer bg-dark text-white py-5">
+  <div class="container">
+      <div class="row"  >
+          <!-- Company Section -->
+          <div class="col-md-2 mb-4">
+              <h5 class="mb-3">Company</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">About</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Careers</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Affiliates</a></li>
+              </ul>
+          </div>
+
+          <!-- Resources Section -->
+          <div class="col-md-2 mb-4">
+              <h5 class="mb-3">Resources</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">Articles</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Blog</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Docs</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">EBooks</a></li>
+              </ul>
+          </div>
+
+          <!-- Courses Section -->
+          <div class="col-md-2 mb-4">
+              <h5 class="mb-3">Courses</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">AI</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Web Development</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Data Science</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Cybersecurity</a></li>
+              </ul>
+          </div>
+
+          <!-- Community Section -->
+          <div class="col-md-2 mb-4">
+              <h5 class="mb-3">Community</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">Visit Community</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Code Crew</a></li>
+              </ul>
+          </div>
+
+          <!-- Additional Section -->
+          <div class="col-md-2 mb-4">
+              <h5 class="mb-3">Support</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">Help Center</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Contact Support</a></li>
+              </ul>
+          </div>
+      </div>
+
+      <!-- Social Media Section -->
+      <div class="row mt-4" style="margin-left: -2%;">
+          <div class="col-md-12 text-center">
+              <h5 class="mb-3">Follow Us</h5>
+              <ul class="list-unstyled d-flex justify-content-center">
+                  <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-facebook-f"></i></a></li>
+                  <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-twitter"></i></a></li>
+                  <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-instagram"></i></a></li>
+                  <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-linkedin-in"></i></a></li>
+                  <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-youtube"></i></a></li>
+              </ul>
+          </div>
+      </div>
+
+      <!-- Copyright Section -->
+      <div class="row mt-4" style="margin-left: -4%;">
+          <div class="col-md-12 text-center">
+              <p class="mb-0 text-muted" style="padding-left: 20px;">&copy; 2025 Learngennie. All rights reserved.</p>
+          </div>
+      </div>
+  </div>
+</footer>
+<!-- End of Footer -->
+ <!-- Bootstrap 5 JS Bundle -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap JS & jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- JavaScript for interactivity -->
+<script>
+  $(document).ready(function () {
+      // Toggle course cheatsheets
+      $(".list-group-item").click(function (e) {
+          e.preventDefault();
+          var selectedCourse = $(this).data("course");
+          $(".course-cheatsheets").hide();
+          $("#" + selectedCourse).fadeIn();
+      });
+
+      // Example data (10 examples per card)
+      const examples = {
+          "html-examples": [
+              `<pre>&lt;h1&gt;Welcome to HTML&lt;/h1&gt;</pre>`,
+              `<pre>&lt;p&gt;This is a paragraph in HTML.&lt;/p&gt;</pre>`,
+              `<pre>&lt;a href="https://example.com"&gt;Click Here&lt;/a&gt;</pre>`,
+              `<pre>&lt;img src="image.jpg" alt="Sample Image"&gt;</pre>`,
+              `<pre>&lt;button&gt;Submit&lt;/button&gt;</pre>`,
+              `<pre>&lt;table&gt;&lt;tr&gt;&lt;td&gt;Row 1&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</pre>`,
+              `<pre>&lt;form&gt;&lt;input type="text" placeholder="Enter name"&gt;&lt;/form&gt;</pre>`,
+              `<pre>&lt;video controls&gt;&lt;source src="video.mp4"&gt;&lt;/video&gt;</pre>`,
+              `<pre>&lt;audio controls&gt;&lt;source src="audio.mp3"&gt;&lt;/audio&gt;</pre>`,
+              `<pre>&lt;iframe src="https://example.com"&gt;&lt;/iframe&gt;</pre>`,
+          ],
+          "css-examples": [
+              `<pre>body { background-color: lightgray; }</pre>`,
+              `<pre>h1 { color: blue; font-size: 24px; }</pre>`,
+              `<pre>a:hover { text-decoration: underline; }</pre>`,
+              `<pre>.container { padding: 10px; }</pre>`,
+              `<pre>button { border-radius: 5px; }</pre>`,
+              `<pre>@media (max-width: 600px) { body { background-color: lightblue; } }</pre>`,
+              `<pre>.shadow { box-shadow: 2px 2px 5px grey; }</pre>`,
+              `<pre>.rounded { border-radius: 50%; }</pre>`,
+              `<pre>li:nth-child(odd) { background: pink; }</pre>`,
+              `<pre>::before { content: "👉"; }</pre>`,
+          ],
+          "ml-examples": [
+              `<pre># Importing Libraries\nimport numpy as np</pre>`,
+              `<pre># Linear Regression Model\nfrom sklearn.linear_model import LinearRegression</pre>`,
+              `<pre># Training a Model\nmodel.fit(X_train, y_train)</pre>`,
+              `<pre># Making Predictions\npredictions = model.predict(X_test)</pre>`,
+              `<pre># Checking Accuracy\nprint(model.score(X_test, y_test))</pre>`,
+              `<pre># Loading a Dataset\nimport pandas as pd\ndata = pd.read_csv("data.csv")</pre>`,
+              `<pre># Standardizing Data\nfrom sklearn.preprocessing import StandardScaler</pre>`,
+              `<pre># Splitting Data\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)</pre>`,
+              `<pre># Creating a Decision Tree\nfrom sklearn.tree import DecisionTreeClassifier</pre>`,
+              `<pre># Evaluating Model Performance\nfrom sklearn.metrics import accuracy_score</pre>`,
+          ],
+          "nn-examples": [
+              `<pre># Neural Network in TensorFlow\nimport tensorflow as tf</pre>`,
+              `<pre># Defining Model\nmodel = tf.keras.Sequential()</pre>`,
+              `<pre># Adding Layers\nmodel.add(tf.keras.layers.Dense(64, activation='relu'))</pre>`,
+              `<pre># Compiling Model\nmodel.compile(optimizer='adam', loss='mse')</pre>`,
+              `<pre># Training Model\nmodel.fit(X_train, y_train, epochs=10)</pre>`,
+              `<pre># Evaluating Neural Network\nloss = model.evaluate(X_test, y_test)</pre>`,
+              `<pre># Saving a Model\nmodel.save("my_model.h5")</pre>`,
+              `<pre># Loading a Model\nmodel = tf.keras.models.load_model("my_model.h5")</pre>`,
+              `<pre># Visualizing Training History\nimport matplotlib.pyplot as plt</pre>`,
+              `<pre># Optimizing Neural Networks with Dropout\nfrom tensorflow.keras.layers import Dropout</pre>`,
+          ],
+          "threats-examples": [
+              `<pre># Common Cyber Threats: Phishing, Malware, Ransomware</pre>`,
+              `<pre># Example of a Phishing Detection Function</pre>`,
+              `<pre>def detect_phishing(email):\n    return "suspicious" in email</pre>`,
+              `<pre># Using Firewalls to Prevent Attacks</pre>`,
+              `<pre># Encrypting Data for Security</pre>`,
+              `<pre># Password Hashing using bcrypt</pre>`,
+              `<pre># Network Security Monitoring Tools</pre>`,
+              `<pre># Implementing Multi-Factor Authentication</pre>`,
+              `<pre># Social Engineering Attack Prevention</pre>`,
+              `<pre># Secure Coding Practices</pre>`,
+          ],
+          "encryption-examples": [
+              `<pre># Symmetric Encryption\nfrom cryptography.fernet import Fernet</pre>`,
+              `<pre># Generating Key\nkey = Fernet.generate_key()</pre>`,
+              `<pre># Encrypting a Message\ncipher = Fernet(key)</pre>`,
+              `<pre># Decrypting a Message\ndecrypted = cipher.decrypt(encrypted_message)</pre>`,
+              `<pre># Storing Keys Securely</pre>`,
+              `<pre># AES Encryption in Python</pre>`,
+              `<pre># RSA Public Key Encryption</pre>`,
+              `<pre># Secure Socket Layer (SSL) Certificates</pre>`,
+              `<pre># End-to-End Encryption in Messaging Apps</pre>`,
+              `<pre># Digital Signatures and Authentication</pre>`,
+          ],
+      };
+
+      $(".card").click(function () {
+          const exampleKey = $(this).data("examples");
+          const exampleList = examples[exampleKey];
+
+          // Clear previous content
+          $("#exampleContent").empty();
+
+          // Append all 10 examples at once
+          exampleList.forEach(example => {
+              $("#exampleContent").append(example);
+          });
+
+          $("#panelTitle").text($(this).find(".card-title").text());
+          $("#examplePanel").addClass("open");
+      });
+  });
+</script>
+
+
+
+</body>
+</html>

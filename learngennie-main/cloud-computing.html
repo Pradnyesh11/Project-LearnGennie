@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Computing Course</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+       <!--poppins font-->
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+       
+    <style>
+        .quiz-results .card {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+        }
+        .quiz-results h3 {
+            color: #1F69F6;
+            border-bottom: 2px solid;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+    <div class="container">
+        <!-- Brand/Logo -->
+        <a class="navbar-brand" href="#">
+            <img src="/img/learngennie_dark.png" alt="Codecademy Logo" class="logo">
+        </a>
+  
+        <!-- Hamburger Menu Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link mx-3" href="authentication/home.html">Home</a>
+                <a class="nav-link mx-3" href="resources.html">Resources</a>
+                <a class="nav-link mx-3" href="courses.html">Courses</a>
+                <a class="nav-link mx-3" href="https://discord.gg/fvkHFPuP" target="_blank">Community</a>
+                <a class="nav-link mx-3" href="about.html">About Us</a>
+            </div>
+        </div>
+    </div>
+  </nav>
+
+
+<div class="container my-5">
+    <div class="course-header text-center mb-5">
+        <h1 class="course-title">Cloud Computing Expert</h1>
+        <p class="course-subtitle">Master Cloud Infrastructure and Services</p>
+    </div>
+
+    <div class="course-description mb-5">
+        <h2>About This Course</h2>
+        <p class="lead">Learn cloud infrastructure, AWS, Azure, deployment models, and best practices for building scalable cloud solutions.</p>
+        <p class="lead">courtesy : FreeCodeCamp.org, Simplilearn</p>
+
+    </div>
+
+    <div class="course-videos mb-5">
+        <h2>Course Videos</h2>
+        <div class="ratio ratio-16x9 mb-4" style="max-width: 800px; border-radius: 15px; overflow: hidden;">
+            <iframe src="https://www.youtube.com/embed/M988_fsOSWo" title="Cloud Fundamentals"  style="width: 100%; height: 100%;" allowfullscreen></iframe>
+        </div>
+      <br>
+        <div class="ratio ratio-16x9 mb-4" style="max-width: 800px; border-radius: 15px; overflow: hidden;">
+          <iframe src="https://www.youtube.com/embed/3hLmDS179YE" 
+                  title="YouTube video player" 
+                  style="width: 100%; height: 100%;"
+                  allowfullscreen></iframe>
+      </div>
+      
+    </div>
+
+    <div class="text-center mb-5">
+        <button onclick="startQuiz()" class="btn btn-primary btn-lg">
+            Take Quiz Now (50 Questions - 45 Minutes)
+        </button>
+    </div>
+
+    <div class="quiz-results mt-5">
+        <h3>Your Previous Attempts</h3>
+        <div id="attempts-container" class="row"></div>
+    </div>
+</div>
+
+<script>
+// Cloud Computing Quiz Questions
+const courseQuestions = {
+    courseId: "cloud-computing",
+    questions: [
+        {
+            text: "What does IaaS stand for?",
+            options: [
+                "Internet as a Service",
+                "Infrastructure as a Service",
+                "Integration as a Service",
+                "Intelligence as a Service"
+            ],
+            correctAnswer: 1
+        },
+        {
+            text: "Which service provides serverless computing in AWS?",
+            options: [
+                "EC2",
+                "Lambda",
+                "S3",
+                "RDS"
+            ],
+            correctAnswer: 1
+        },
+        {
+            text: "What is the primary benefit of cloud computing?",
+            options: [
+                "Reduced physical hardware costs",
+                "Automatic software updates",
+                "Scalability and flexibility",
+                "All of the above"
+            ],
+            correctAnswer: 3
+        },
+        {
+            text: "Which deployment model provides dedicated cloud infrastructure?",
+            options: [
+                "Public Cloud",
+                "Private Cloud",
+                "Hybrid Cloud",
+                "Community Cloud"
+            ],
+            correctAnswer: 1
+        },
+        {
+            text: "What does 'AZ' stand for in AWS?",
+            options: [
+                "Access Zone",
+                "Availability Zone",
+                "Amazon Zone",
+                "Application Zone"
+            ],
+            correctAnswer: 1
+        },
+        // Add 45 more cloud computing questions
+        {
+            text: "Which service provides object storage in AWS?",
+            options: [
+                "EC2",
+                "S3",
+                "Lambda",
+                "DynamoDB"
+            ],
+            correctAnswer: 1
+        },
+        {
+    text: "What does IaaS stand for in cloud computing?",
+    options: [
+      "Infrastructure as a Service",
+      "Internet as a Service",
+      "Integration as a System",
+      "Instance and Application Scaling"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which AWS service provides object storage?",
+    options: [
+      "EC2",
+      "S3",
+      "Lambda",
+      "RDS"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "What is the primary benefit of cloud elasticity?",
+    options: [
+      "Fixed pricing models",
+      "Automatic resource scaling",
+      "Physical data security",
+      "Hardware customization"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "Which Azure service is used for serverless computing?",
+    options: [
+      "Azure Virtual Machines",
+      "Azure Functions",
+      "Azure Blob Storage",
+      "Azure SQL Database"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "What is multi-tenancy in cloud computing?",
+    options: [
+      "Multiple users sharing physical resources",
+      "Ten simultaneous connections",
+      "Data replication across tenants",
+      "Ten-step authentication process"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which GCP service manages Kubernetes clusters?",
+    options: [
+      "Cloud Run",
+      "Compute Engine",
+      "Kubernetes Engine (GKE)",
+      "Cloud Functions"
+    ],
+    correctAnswer: 2
+  },
+  {
+    text: "What does the 'Shared Responsibility Model' define?",
+    options: [
+      "Cost allocation between teams",
+      "Security duties between provider and customer",
+      "Cloud resource naming conventions",
+      "Data center maintenance schedules"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "Which is a characteristic of cloud computing?",
+    options: [
+      "On-premises hosting",
+      "Dedicated physical servers",
+      "Resource pooling",
+      "Long-term hardware contracts"
+    ],
+    correctAnswer: 2
+  },
+  {
+    text: "What is vertical scaling?",
+    options: [
+      "Adding more instances",
+      "Increasing instance capacity",
+      "Geographical distribution",
+      "Automated failover"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "Which service provides DNS management in AWS?",
+    options: [
+      "Route 53",
+      "CloudFront",
+      "API Gateway",
+      "Direct Connect"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is a hypervisor's primary function?",
+    options: [
+      "Manage container orchestration",
+      "Create and run virtual machines",
+      "Monitor network traffic",
+      "Encrypt cloud storage"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "Which is a PaaS offering?",
+    options: [
+      "AWS EC2",
+      "Azure App Service",
+      "Google Compute Engine",
+      "DigitalOcean Droplets"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "What does 'cold storage' refer to in cloud?",
+    options: [
+      "Data center temperature control",
+      "Infrequently accessed data storage",
+      "Edge computing locations",
+      "Disaster recovery sites"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "Which tool is used for infrastructure-as-code?",
+    options: [
+      "Jenkins",
+      "Terraform",
+      "Nagios",
+      "Kibana"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "What is Azure's equivalent of AWS VPC?",
+    options: [
+      "Virtual Network (VNet)",
+      "Resource Group",
+      "Availability Zone",
+      "Load Balancer"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which protocol is commonly used for cloud storage access?",
+    options: [
+      "FTP",
+      "SMTP",
+      "RESTful API",
+      "SSH"
+    ],
+    correctAnswer: 2
+  },
+  {
+    text: "What does 'lift and shift' migration mean?",
+    options: [
+      "Re-architecting applications for cloud",
+      "Moving workloads without modification",
+      "Transferring physical servers",
+      "Cloud-to-cloud migration"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "Which AWS service handles content delivery?",
+    options: [
+      "S3",
+      "CloudFront",
+      "Snowball",
+      "Storage Gateway"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "What is a cloud availability zone?",
+    options: [
+      "Geographical region",
+      "Isolated data center location",
+      "Network security zone",
+      "Free tier usage area"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "Which GCP service is used for big data analytics?",
+    options: [
+      "Cloud SQL",
+      "BigQuery",
+      "Cloud Spanner",
+      "Firestore"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "What is serverless computing?",
+    options: [
+      "Running code without servers",
+      "Using physical servers",
+      "Self-hosted containers",
+      "Edge computing devices"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which Azure service manages containers?",
+    options: [
+      "Azure Container Instances",
+      "Azure Kubernetes Service (AKS)",
+      "Azure App Service",
+      "Azure Batch"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "What is a cloud SLA?",
+    options: [
+      "Software License Agreement",
+      "Service Level Agreement",
+      "System Log Analysis",
+      "Secure Login Authentication"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "Which is a NoSQL database service?",
+    options: [
+      "Amazon RDS",
+      "Azure SQL Database",
+      "Google Cloud Spanner",
+      "MongoDB Atlas"
+    ],
+    correctAnswer: 3
+  },
+  {
+    text: "What does 'OpEx' refer to in cloud?",
+    options: [
+      "Operational Excellence",
+      "Optimized Expenditure",
+      "Operational Expenditure",
+      "Open Source Experiments"
+    ],
+    correctAnswer: 2
+  },
+  {
+    text: "Which service provides cloud-based version control?",
+    options: [
+      "GitHub Actions",
+      "AWS CodeCommit",
+      "Azure Pipelines",
+      "Google Cloud Build"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "What is container orchestration?",
+    options: [
+      "Managing multiple containers",
+      "Storing container images",
+      "Building container files",
+      "Securing container networks"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which AWS feature helps reduce costs?",
+    options: [
+      "Reserved Instances",
+      "Elastic IPs",
+      "NAT Gateway",
+      "Direct Connect"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is cloud bursting?",
+    options: [
+      "Data center failure",
+      "Hybrid cloud scaling",
+      "DDoS protection",
+      "Storage capacity alerts"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "Which GCP service provides VM instances?",
+    options: [
+      "Cloud Run",
+      "Compute Engine",
+      "App Engine",
+      "Cloud Functions"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "What is the purpose of IAM?",
+    options: [
+      "Infrastructure Automation Management",
+      "Identity and Access Management",
+      "Integrated Alert Monitoring",
+      "Instance Allocation Metrics"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "Which Azure service monitors resources?",
+    options: [
+      "Azure Monitor",
+      "Azure Advisor",
+      "Azure Sentinel",
+      "Azure Policy"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is a Docker container?",
+    options: [
+      "Virtual machine image",
+      "Standardized software package",
+      "Cloud storage unit",
+      "Network security group"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "Which is a disaster recovery strategy?",
+    options: [
+      "Blue/Green Deployment",
+      "Canary Release",
+      "Pilot Light",
+      "Feature Flagging"
+    ],
+    correctAnswer: 2
+  },
+  {
+    text: "What does CDN stand for?",
+    options: [
+      "Content Delivery Network",
+      "Cloud Data Node",
+      "Centralized Directory Name",
+      "Container Deployment Nexus"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which service provides cloud-based AI tools?",
+    options: [
+      "AWS SageMaker",
+      "Azure DevOps",
+      "Google Cloud Storage",
+      "DigitalOcean Spaces"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is infrastructure-as-code?",
+    options: [
+      "Manual server configuration",
+      "Programming physical hardware",
+      "Managing infrastructure through scripts",
+      "Cloud provider documentation"
+    ],
+    correctAnswer: 2
+  },
+  {
+    text: "Which AWS service handles load balancing?",
+    options: [
+      "Auto Scaling",
+      "Elastic Load Balancer (ELB)",
+      "Route 53",
+      "CloudWatch"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "What is a virtual private cloud (VPC)?",
+    options: [
+      "Public cloud marketplace",
+      "Isolated network environment",
+      "Physical data center",
+      "VPN connection service"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "Which tool manages container clusters?",
+    options: [
+      "Docker Compose",
+      "Kubernetes",
+      "Terraform",
+      "Ansible"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "What is blue-green deployment?",
+    options: [
+      "Environmental monitoring",
+      "Zero-downtime release strategy",
+      "Cost optimization technique",
+      "Data encryption method"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "Which service provides managed databases?",
+    options: [
+      "AWS EC2",
+      "Azure Virtual Machines",
+      "Google Cloud SQL",
+      "DigitalOcean Droplets"
+    ],
+    correctAnswer: 2
+  },
+  {
+    text: "What is edge computing?",
+    options: [
+      "Centralized cloud processing",
+      "Data processing at network periphery",
+      "Quantum computing",
+      "Blockchain technology"
+    ],
+    correctAnswer: 1
+  },
+  {
+    text: "Which cloud model offers maximum control?",
+    options: [
+      "Public Cloud",
+      "Private Cloud",
+      "Hybrid Cloud",
+      "Community Cloud"
+    ],
+    correctAnswer: 1
+  }
+    ]
+};
+
+function startQuiz() {
+  localStorage.setItem('currentQuiz', JSON.stringify(courseQuestions));
+  window.location.href = 'quiz.html'; // No URL parameters needed
+}
+
+function loadQuizAttempts() {
+    const attempts = JSON.parse(localStorage.getItem('quizAttempts') || '[]');
+    const courseAttempts = attempts.filter(a => a.courseId === 'cloud-computing');
+    
+    const container = document.getElementById('attempts-container');
+    container.innerHTML = courseAttempts.map(attempt => `
+        <div class="col-md-6 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5>${new Date(attempt.timestamp).toLocaleDateString()}</h5>
+                    <p>Score: ${attempt.score}/${attempt.totalQuestions}</p>
+                    <small class="text-muted">
+                        Time: ${Math.floor(attempt.timeTaken/60)}m ${attempt.timeTaken%60}s
+                    </small>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+window.onload = loadQuizAttempts;
+</script>
+
+
+<!-- Footer -->
+<footer class="footer bg-dark text-white py-5">
+  <div class="container">
+      <div class="row"  >
+          <!-- Company Section -->
+          <div class="col-md-2 mb-4">
+              <h5 class="mb-3">Company</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">About</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Careers</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Affiliates</a></li>
+              </ul>
+          </div>
+
+          <!-- Resources Section -->
+          <div class="col-md-2 mb-4">
+              <h5 class="mb-3">Resources</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">Articles</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Blog</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Docs</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">EBooks</a></li>
+              </ul>
+          </div>
+
+          <!-- Courses Section -->
+          <div class="col-md-2 mb-4">
+              <h5 class="mb-3">Courses</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">AI</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Web Development</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Data Science</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Cybersecurity</a></li>
+              </ul>
+          </div>
+
+          <!-- Community Section -->
+          <div class="col-md-2 mb-4">
+              <h5 class="mb-3">Community</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">Visit Community</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Code Crew</a></li>
+              </ul>
+          </div>
+
+          <!-- Additional Section -->
+          <div class="col-md-2 mb-4">
+              <h5 class="mb-3">Support</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">Help Center</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Contact Support</a></li>
+              </ul>
+          </div>
+      </div>
+
+      <!-- Social Media Section -->
+      <div class="row mt-4" style="margin-left: -2%;">
+          <div class="col-md-12 text-center">
+              <h5 class="mb-3">Follow Us</h5>
+              <ul class="list-unstyled d-flex justify-content-center">
+                  <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-facebook-f"></i></a></li>
+                  <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-twitter"></i></a></li>
+                  <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-instagram"></i></a></li>
+                  <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-linkedin-in"></i></a></li>
+                  <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-youtube"></i></a></li>
+              </ul>
+          </div>
+      </div>
+
+      <!-- Copyright Section -->
+      <div class="row mt-4" style="margin-left: -4%;">
+          <div class="col-md-12 text-center">
+              <p class="mb-0 text-muted" style="padding-left: 20px;">&copy; 2025 Learngennie. All rights reserved.</p>
+          </div>
+      </div>
+  </div>
+</footer>
+<!-- End of Footer -->
+</body>
+</html>

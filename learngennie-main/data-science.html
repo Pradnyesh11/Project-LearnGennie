@@ -1,0 +1,721 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science Course</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+       <!--poppins font-->
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+       
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .quiz-results .card {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+        }
+        .quiz-results h3 {
+            color: #1F69F6;
+            border-bottom: 2px solid;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+    <div class="container">
+        <!-- Brand/Logo -->
+        <a class="navbar-brand" href="#">
+            <img src="/img/learngennie_dark.png" alt="Codecademy Logo" class="logo">
+        </a>
+  
+        <!-- Hamburger Menu Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link mx-3" href="authentication/home.html">Home</a>
+                <a class="nav-link mx-3" href="resources.html">Resources</a>
+                <a class="nav-link mx-3" href="courses.html">Courses</a>
+                <a class="nav-link mx-3" href="https://discord.gg/fvkHFPuP" target="_blank">Community</a>
+                <a class="nav-link mx-3" href="about.html">About Us</a>
+            </div>
+        </div>
+    </div>
+  </nav>
+
+<div class="container my-5">
+    <div class="course-header text-center mb-5">
+        <h1 class="course-title">Data-science Masterclass</h1>
+        <p class="course-subtitle">become a Data-Science expert</p>
+    </div>
+
+    <div class="course-description mb-5">
+        <h2>About This Course</h2>
+        <p class="lead">Learn Data-Science with friendly concepts explaination</p>
+        <p class="lead">courtesy : !edureka</p>
+    </div>
+
+    <div class="course-videos mb-5">
+        <h2>Course Videos</h2>
+        <div class="ratio ratio-16x9 mb-4" style="max-width: 800px; border-radius: 15px; overflow: hidden;">
+            <iframe src="https://www.youtube.com/embed/-ETQ97mXXF0?si=MT4FEVa_Qv0DpKoD" 
+                    title="YouTube video player" 
+                    style="width: 100%; height: 100%;"
+                    allowfullscreen></iframe>
+        </div>
+        
+    </div>
+
+    <div class="text-center mb-5">
+        <button onclick="startQuiz()" class="btn btn-primary btn-lg">
+            Take Quiz Now (50 Questions - 45 Minutes)
+        </button>
+    </div>
+
+    <div class="quiz-results mt-5">
+        <h3>Your Previous Attempts</h3>
+        <div id="attempts-container" class="row"></div>
+    </div>
+</div>
+
+<script>
+// Quiz Questions
+const courseQuestions = {
+    courseId: "Data-science",
+    questions: [
+  {
+    text: "What is the primary goal of data science?",
+    options: [
+      "To analyze and extract insights from data",
+      "To design computer hardware",
+      "To develop video games",
+      "To write operating systems"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "Which programming language is most commonly used in data science?",
+    options: [
+      "Python",
+      "Java",
+      "C++",
+      "Ruby"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What does SQL stand for?",
+    options: [
+      "Structured Query Language",
+      "Simple Question Language",
+      "Statistical Query Logic",
+      "Sequential Query Layer"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "Which of the following is a supervised learning algorithm?",
+    options: [
+      "Linear Regression",
+      "K-Means Clustering",
+      "Principal Component Analysis (PCA)",
+      "Apriori Algorithm"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the purpose of a confusion matrix?",
+    options: [
+      "To evaluate classification model performance",
+      "To store raw data",
+      "To visualize large datasets",
+      "To clean missing values"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "Which library is used for data manipulation in Python?",
+    options: [
+      "Pandas",
+      "Matplotlib",
+      "TensorFlow",
+      "Scikit-learn"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is overfitting in machine learning?",
+    options: [
+      "A model that performs well on training data but poorly on unseen data",
+      "A model that fails to learn from training data",
+      "A model with too few parameters",
+      "A model that ignores important features"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "Which technique is used to handle missing data?",
+    options: [
+      "Imputation",
+      "Extrapolation",
+      "Normalization",
+      "Clustering"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the purpose of cross-validation?",
+    options: [
+      "To assess model generalization",
+      "To increase dataset size",
+      "To remove outliers",
+      "To reduce computational cost"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is a feature in machine learning?",
+    options: [
+      "An input variable used for prediction",
+      "A type of algorithm",
+      "A data visualization tool",
+      "A performance metric"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "Which algorithm is used for recommendation systems?",
+    options: [
+      "Collaborative Filtering",
+      "Decision Trees",
+      "Support Vector Machines (SVM)",
+      "K-Nearest Neighbors (KNN)"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the main use of Principal Component Analysis (PCA)?",
+    options: [
+      "Dimensionality reduction",
+      "Classification",
+      "Clustering",
+      "Regression"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "Which of the following is a deep learning framework?",
+    options: [
+      "TensorFlow",
+      "Scikit-learn",
+      "Pandas",
+      "NumPy"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the purpose of regularization in machine learning?",
+    options: [
+      "To prevent overfitting",
+      "To speed up training",
+      "To increase model complexity",
+      "To reduce dataset size"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the difference between classification and regression?",
+    options: [
+      "Classification predicts categories, regression predicts continuous values",
+      "Classification predicts numbers, regression predicts labels",
+      "Classification is unsupervised, regression is supervised",
+      "There is no difference"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "Which metric is used for evaluating classification models?",
+    options: [
+      "Accuracy",
+      "Mean Squared Error (MSE)",
+      "R-squared",
+      "Sum of Squared Errors (SSE)"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is an outlier in data analysis?",
+    options: [
+      "A data point significantly different from others",
+      "A missing value",
+      "A duplicate record",
+      "A categorical variable"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the purpose of EDA (Exploratory Data Analysis)?",
+    options: [
+      "To summarize main characteristics of data",
+      "To train machine learning models",
+      "To deploy models in production",
+      "To write SQL queries"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "Which algorithm is used for anomaly detection?",
+    options: [
+      "Isolation Forest",
+      "Linear Regression",
+      "Logistic Regression",
+      "Random Forest"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the role of a loss function in machine learning?",
+    options: [
+      "To measure model error",
+      "To store training data",
+      "To visualize results",
+      "To clean datasets"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the difference between bagging and boosting?",
+    options: [
+      "Bagging builds models in parallel, boosting builds sequentially",
+      "Bagging reduces variance, boosting reduces bias",
+      "Both A and B",
+      "Neither A nor B"
+    ],
+    "correctAnswer": 2
+  },
+  {
+   text: "Which technique is used for text classification?",
+    options: [
+      "Natural Language Processing (NLP)",
+      "K-Means Clustering",
+      "Principal Component Analysis (PCA)",
+      "Linear Regression"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the purpose of a ROC curve?",
+    options: [
+      "To evaluate binary classifiers",
+      "To visualize high-dimensional data",
+      "To clean datasets",
+      "To perform feature selection"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the difference between supervised and unsupervised learning?",
+    options: [
+      "Supervised uses labeled data, unsupervised uses unlabeled data",
+      "Supervised is faster, unsupervised is slower",
+      "Supervised is for regression, unsupervised is for classification",
+      "There is no difference"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "Which of the following is a clustering algorithm?",
+    options: [
+      "K-Means",
+      "Linear Regression",
+      "Decision Trees",
+      "Support Vector Machines (SVM)"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the purpose of feature scaling?",
+    options: [
+      "To normalize data range",
+      "To remove features",
+      "To add noise to data",
+      "To reduce dataset size"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is a neural network?",
+    options: [
+      "A model inspired by the human brain",
+      "A database management system",
+      "A type of regression model",
+      "A data visualization tool"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "Which of the following is a bias-variance tradeoff?",
+    options: [
+      "Balancing underfitting and overfitting",
+      "Choosing between Python and R",
+      "Selecting features randomly",
+      "Ignoring missing data"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the purpose of A/B testing?",
+    options: [
+      "To compare two versions of a product",
+      "To train machine learning models",
+      "To clean datasets",
+      "To perform clustering"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "Which of the following is a regression metric?",
+    options: [
+      "Mean Absolute Error (MAE)",
+      "Accuracy",
+      "Precision",
+      "F1 Score"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the role of a data scientist?",
+    options: [
+      "To analyze data and extract insights",
+      "To develop mobile apps",
+      "To design computer hardware",
+      "To manage social media accounts"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the purpose of a pipeline in machine learning?",
+    options: [
+      "To automate workflow steps",
+      "To store raw data",
+      "To visualize datasets",
+      "To remove outliers"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "Which of the following is a classification algorithm?",
+    options: [
+      "Logistic Regression",
+      "Linear Regression",
+      "K-Means Clustering",
+      "Principal Component Analysis (PCA)"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the difference between precision and recall?",
+    options: [
+      "Precision measures correctness, recall measures completeness",
+      "Precision is for regression, recall is for clustering",
+      "Both are the same",
+      "Neither is used in machine learning"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the purpose of a decision tree?",
+    options: [
+      "To make decisions based on feature splits",
+      "To store large datasets",
+      "To clean missing values",
+      "To perform matrix multiplication"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "Which of the following is a big data technology?",
+    options: [
+      "Apache Hadoop",
+      "Scikit-learn",
+      "Pandas",
+      "NumPy"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the purpose of feature engineering?",
+    options: [
+      "To improve model performance by creating better features",
+      "To delete all features",
+      "To ignore data preprocessing",
+      "To reduce model complexity"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the difference between correlation and causation?",
+    options: [
+      "Correlation does not imply causation",
+      "They are the same",
+      "Causation is weaker than correlation",
+      "Neither is important in data science"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "Which of the following is a reinforcement learning example?",
+    options: [
+      "Training a robot to navigate a maze",
+      "Predicting house prices",
+      "Classifying emails as spam",
+      "Clustering customer data"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the purpose of a heatmap?",
+    options: [
+      "To visualize correlation matrices",
+      "To train deep learning models",
+      "To clean datasets",
+      "To perform feature selection"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "Which of the following is a time-series forecasting method?",
+    options: [
+      "ARIMA",
+      "K-Means Clustering",
+      "Logistic Regression",
+      "Support Vector Machines (SVM)"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the purpose of a Jupyter Notebook?",
+    options: [
+      "To write and share live code and visualizations",
+      "To store databases",
+      "To design websites",
+      "To manage cloud servers"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "Which of the following is an unsupervised learning task?",
+    options: [
+      "Clustering",
+      "Regression",
+      "Classification",
+      "A/B Testing"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the purpose of a box plot?",
+    options: [
+      "To visualize data distribution and outliers",
+      "To train neural networks",
+      "To clean missing data",
+      "To perform dimensionality reduction"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "Which of the following is a hyperparameter?",
+    options: [
+      "Learning rate in a neural network",
+      "Mean of a dataset",
+      "Output of a model",
+      "A feature column"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the difference between batch and stochastic gradient descent?",
+    options: [
+      "Batch uses entire dataset, stochastic uses one sample at a time",
+      "Batch is slower, stochastic is faster",
+      "Both A and B",
+      "Neither A nor B"
+    ],
+    "correctAnswer": 2
+  },
+  {
+   text: "What is the purpose of a scatter plot?",
+    options: [
+      "To visualize relationships between two variables",
+      "To train machine learning models",
+      "To clean datasets",
+      "To perform feature scaling"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "Which of the following is a common data science workflow step?",
+    options: [
+      "Data cleaning",
+      "Ignoring missing values",
+      "Skipping EDA",
+      "Avoiding model evaluation"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the purpose of a random forest?",
+    options: [
+      "To improve prediction accuracy using multiple decision trees",
+      "To store large datasets",
+      "To clean missing values",
+      "To perform linear regression"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "Which of the following is a common data science library in Python?",
+    options: [
+      "Scikit-learn",
+      "Django",
+      "Flask",
+      "React"
+    ],
+    "correctAnswer": 0
+  },
+  {
+   text: "What is the difference between machine learning and deep learning?",
+    options: [
+      "Deep learning uses neural networks with many layers",
+      "Machine learning is always unsupervised",
+      "Deep learning is simpler than machine learning",
+      "There is no difference"
+    ],
+    "correctAnswer": 0
+  }
+]
+};
+
+
+function startQuiz() {
+    // Store questions in localStorage instead of URL
+    localStorage.setItem('currentQuiz', JSON.stringify(courseQuestions));
+    window.location.href = 'quiz.html'; // No URL parameters needed
+}
+
+// Load attempts
+function loadQuizAttempts() {
+    const attempts = JSON.parse(localStorage.getItem('quizAttempts') || '[]');
+    const courseAttempts = attempts.filter(a => a.courseId === 'Data-science');
+    
+    const container = document.getElementById('attempts-container');
+    container.innerHTML = courseAttempts.map(attempt => `
+        <div class="col-md-6 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5>${new Date(attempt.timestamp).toLocaleDateString()}</h5>
+                    <p>Score: ${attempt.score}/${attempt.totalQuestions}</p>
+                    <small class="text-muted">
+                        Time: ${Math.floor(attempt.timeTaken/60)}m ${attempt.timeTaken%60}s
+                    </small>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Initialize on load
+window.onload = loadQuizAttempts;
+</script>
+
+<!-- Footer -->
+<footer class="footer bg-dark text-white py-5">
+  <div class="container">
+      <div class="row"  >
+          <!-- Company Section -->
+          <div class="col-md-2 mb-4">
+              <h5 class="mb-3">Company</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">About</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Careers</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Affiliates</a></li>
+              </ul>
+          </div>
+
+          <!-- Resources Section -->
+          <div class="col-md-2 mb-4">
+              <h5 class="mb-3">Resources</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">Articles</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Blog</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Docs</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">EBooks</a></li>
+              </ul>
+          </div>
+
+          <!-- Courses Section -->
+          <div class="col-md-2 mb-4">
+              <h5 class="mb-3">Courses</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">AI</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Web Development</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Data Science</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Cybersecurity</a></li>
+              </ul>
+          </div>
+
+          <!-- Community Section -->
+          <div class="col-md-2 mb-4">
+              <h5 class="mb-3">Community</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">Visit Community</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Code Crew</a></li>
+              </ul>
+          </div>
+
+          <!-- Additional Section -->
+          <div class="col-md-2 mb-4">
+              <h5 class="mb-3">Support</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">Help Center</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Contact Support</a></li>
+              </ul>
+          </div>
+      </div>
+
+      <!-- Social Media Section -->
+      <div class="row mt-4" style="margin-left: -2%;">
+          <div class="col-md-12 text-center">
+              <h5 class="mb-3">Follow Us</h5>
+              <ul class="list-unstyled d-flex justify-content-center">
+                  <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-facebook-f"></i></a></li>
+                  <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-twitter"></i></a></li>
+                  <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-instagram"></i></a></li>
+                  <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-linkedin-in"></i></a></li>
+                  <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-youtube"></i></a></li>
+              </ul>
+          </div>
+      </div>
+
+      <!-- Copyright Section -->
+      <div class="row mt-4" style="margin-left: -4%;">
+          <div class="col-md-12 text-center">
+              <p class="mb-0 text-muted" style="padding-left: 20px;">&copy; 2025 Learngennie. All rights reserved.</p>
+          </div>
+      </div>
+  </div>
+</footer>
+<!-- End of Footer -->
+
+</body>
+</html>

@@ -1,0 +1,711 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Course</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+       <!--poppins font-->
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+       
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .quiz-results .card {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+        }
+        .quiz-results h3 {
+            color: #1F69F6;
+            border-bottom: 2px solid;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+    <div class="container">
+        <!-- Brand/Logo -->
+        <a class="navbar-brand" href="#">
+            <img src="/img/learngennie_dark.png" alt="Codecademy Logo" class="logo">
+        </a>
+  
+        <!-- Hamburger Menu Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link mx-3" href="authentication/home.html">Home</a>
+                <a class="nav-link mx-3" href="resources.html">Resources</a>
+                <a class="nav-link mx-3" href="courses.html">Courses</a>
+                <a class="nav-link mx-3" href="https://discord.gg/fvkHFPuP" target="_blank">Community</a>
+                <a class="nav-link mx-3" href="about.html">About Us</a>
+            </div>
+        </div>
+    </div>
+  </nav>
+
+<div class="container my-5">
+    <div class="course-header text-center mb-5">
+        <h1 class="course-title">Blockchain Masterclass</h1>
+        <p class="course-subtitle">From Zero to Professional Developer</p>
+    </div>
+
+    <div class="course-description mb-5">
+        <h2>About This Course</h2>
+        <p class="lead">Learn bloackchain development for free with &copy;learngennie.</p>
+        <p class="lead">courtesy : !edureka</p>
+    </div>
+
+    <div class="course-videos mb-5">
+        <h2>Course Videos</h2>
+        <div class="ratio ratio-16x9 mb-4" style="max-width: 800px; border-radius: 15px; overflow: hidden;">
+            <iframe src="https://www.youtube.com/embed/SyVMma1IkXM?si=xJd7Cr1Z4Csx2CC6" 
+                    title="YouTube video player" 
+                    style="width: 100%; height: 100%;"
+                    allowfullscreen></iframe>
+        </div>
+        
+    </div>
+
+    <div class="text-center mb-5">
+        <button onclick="startQuiz()" class="btn btn-primary btn-lg">
+            Take Quiz Now (50 Questions - 45 Minutes)
+        </button>
+    </div>
+
+    <div class="quiz-results mt-5">
+        <h3>Your Previous Attempts</h3>
+        <div id="attempts-container" class="row"></div>
+    </div>
+</div>
+
+<script>
+// Quiz Questions
+const courseQuestions = {
+    courseId: "blockchain",
+    questions: [
+  {
+    text: "What is the core concept behind blockchain technology?",
+    options: [
+      "Decentralized ledger system",
+      "Centralized database",
+      "Cloud storage",
+      "Peer-to-peer file sharing"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which cryptographic algorithm is fundamental to blockchain security?",
+    options: [
+      "SHA-256",
+      "AES-128",
+      "RSA-2048",
+      "Blowfish"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What was the first blockchain implementation?",
+    options: [
+      "Bitcoin",
+      "Ethereum",
+      "Ripple",
+      "Litecoin"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is a smart contract?",
+    options: [
+      "Self-executing code on blockchain",
+      "Legal agreement in PDF",
+      "Cloud computing contract",
+      "Cryptocurrency wallet"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which consensus mechanism does Bitcoin use?",
+    options: [
+      "Proof of Work",
+      "Proof of Stake",
+      "Delegated Proof of Stake",
+      "Proof of Authority"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is Ethereum's native cryptocurrency called?",
+    options: [
+      "ETH",
+      "ETC",
+      "XRP",
+      "BCH"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What does NFT stand for?",
+    options: [
+      "Non-Fungible Token",
+      "New Financial Technology",
+      "Network File Transfer",
+      "Native Fungible Token"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which programming language is primarily used for Ethereum smart contracts?",
+    options: [
+      "Solidity",
+      "Python",
+      "Java",
+      "C++"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is gas in Ethereum?",
+    options: [
+      "Transaction fee measurement",
+      "New cryptocurrency",
+      "Mining reward",
+      "Blockchain storage unit"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is the purpose of a Merkle Tree in blockchain?",
+    options: [
+      "Efficient data verification",
+      "Smart contract execution",
+      "Wallet address generation",
+      "Consensus mechanism"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which of these is NOT a blockchain platform?",
+    options: [
+      "MySQL",
+      "Hyperledger Fabric",
+      "Corda",
+      "EOS"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is a 51% attack?",
+    options: [
+      "Controlling majority of network hash rate",
+      "Hacking 51 wallets",
+      "Creating 51 smart contracts",
+      "Owning 51% of total coins"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is the main innovation of blockchain over traditional databases?",
+    options: [
+      "Immutable distributed ledger",
+      "Faster query processing",
+      "Lower storage requirements",
+      "Centralized control"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which protocol enables communication between blockchains?",
+    options: [
+      "Interledger",
+      "HTTPS",
+      "TCP/IP",
+      "SMTP"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is a dApp?",
+    options: [
+      "Decentralized application",
+      "Digital appliance",
+      "Data application",
+      "Dynamic applet"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which company created Hyperledger?",
+    options: [
+      "Linux Foundation",
+      "Microsoft",
+      "IBM",
+      "Ethereum Foundation"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is sharding in blockchain?",
+    options: [
+      "Partitioning database to improve scalability",
+      "Breaking smart contracts",
+      "Mining technique",
+      "Wallet backup process"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What does IPFS stand for?",
+    options: [
+      "InterPlanetary File System",
+      "Internet Protocol File Storage",
+      "Integrated Payment For Services",
+      "International Public Financial System"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which blockchain introduced Proof of Stake consensus?",
+    options: [
+      "Ethereum 2.0",
+      "Bitcoin",
+      "Litecoin",
+      "Ripple"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is the purpose of Oracles in blockchain?",
+    options: [
+      "Connect smart contracts to external data",
+      "Mine new blocks",
+      "Validate transactions",
+      "Create new cryptocurrencies"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which algorithm does Litecoin use that's different from Bitcoin?",
+    options: [
+      "Scrypt",
+      "SHA-256",
+      "Ethash",
+      "X11"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is a hard fork?",
+    options: [
+      "Permanent divergence in blockchain",
+      "Software update",
+      "Wallet backup",
+      "Mining pool"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which token standard is used for NFTs on Ethereum?",
+    options: [
+      "ERC-721",
+      "ERC-20",
+      "BEP-2",
+      "TRC-10"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is Web3?",
+    options: [
+      "Decentralized web vision",
+      "Third version of HTML",
+      "New JavaScript framework",
+      "Cloud computing platform"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which cryptocurrency uses Directed Acyclic Graph (DAG) instead of blockchain?",
+    options: [
+      "IOTA",
+      "Bitcoin",
+      "Ethereum",
+      "Cardano"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is zero-knowledge proof?",
+    options: [
+      "Verification without revealing data",
+      "Empty blockchain",
+      "Unconfirmed transaction",
+      "New mining algorithm"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which blockchain platform focuses on enterprise use cases?",
+    options: [
+      "Hyperledger Fabric",
+      "Dogecoin",
+      "Shiba Inu",
+      "PepeCoin"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is the purpose of a nonce in blockchain?",
+    options: [
+      "Number used once in mining",
+      "New cryptocurrency",
+      "Smart contract bug",
+      "Wallet password"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which protocol enables token swapping without intermediaries?",
+    options: [
+      "Automated Market Maker (AMM)",
+      "Proof of Work",
+      "Sharding",
+      "SegWit"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is the Byzantine Generals Problem?",
+    options: [
+      "Coordination challenge in distributed systems",
+      "Blockchain scaling issue",
+      "Smart contract vulnerability",
+      "Cryptocurrency theft"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which blockchain uses 'Plutus' as its smart contract language?",
+    options: [
+      "Cardano",
+      "Solana",
+      "Polkadot",
+      "Avalanche"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is the purpose of stablecoins?",
+    options: [
+      "Minimize price volatility",
+      "Increase mining rewards",
+      "Replace fiat currencies",
+      "Speed up block creation"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which Layer 2 solution uses payment channels for Bitcoin?",
+    options: [
+      "Lightning Network",
+      "Polygon",
+      "Optimism",
+      "Arbitrum"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is DeFi?",
+    options: [
+      "Decentralized Finance",
+      "Digital Filings",
+      "Distributed Firewall",
+      "Dynamic Forking"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which blockchain platform uses 'Substrate' framework?",
+    options: [
+      "Polkadot",
+      "Ethereum",
+      "Solana",
+      "Avalanche"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is MEV in blockchain?",
+    options: [
+      "Miner Extractable Value",
+      "Maximum Ethereum Volume",
+      "Mining Efficiency Variable",
+      "Minimum Exchange Value"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which consensus mechanism does Cardano use?",
+    options: [
+      "Ouroboros",
+      "Proof of Work",
+      "Proof of Authority",
+      "Delegated Proof of Stake"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is a wrapped token?",
+    options: [
+      "Tokenized version of another cryptocurrency",
+      "Encrypted private key",
+      "New mining reward",
+      "Blockchain storage unit"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which blockchain uses 'Rust' as its primary programming language?",
+    options: [
+      "Solana",
+      "Ethereum",
+      "Hyperledger",
+      "Tezos"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is the purpose of zk-SNARKs?",
+    options: [
+      "Privacy-preserving transactions",
+      "Increase block size",
+      "Speed up mining",
+      "Create new tokens"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which blockchain introduced the concept of 'sharding' first?",
+    options: [
+      "Zilliqa",
+      "Bitcoin",
+      "Litecoin",
+      "Ripple"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is the purpose of Uniswap?",
+    options: [
+      "Decentralized exchange",
+      "Blockchain explorer",
+      "Mining pool",
+      "Wallet service"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which blockchain uses 'Move' programming language?",
+    options: [
+      "Aptos",
+      "Ethereum",
+      "Cardano",
+      "Solana"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is a DAO?",
+    options: [
+      "Decentralized Autonomous Organization",
+      "Digital Asset Oracle",
+      "Distributed Application Object",
+      "Dynamic Algorithmic Operation"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which protocol enables cross-chain interoperability?",
+    options: [
+      "Cosmos IBC",
+      "HTTP",
+      "TCP/IP",
+      "SMTP"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is the purpose of The Graph protocol?",
+    options: [
+      "Indexing blockchain data",
+      "Mining cryptocurrency",
+      "Creating smart contracts",
+      "Validating transactions"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which blockchain uses 'Golang' as its primary language?",
+    options: [
+      "Hyperledger Fabric",
+      "Ethereum",
+      "Cardano",
+      "Polkadot"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is rollup in Ethereum scaling?",
+    options: [
+      "Layer 2 solution bundling transactions",
+      "Hard fork",
+      "New consensus mechanism",
+      "Wallet backup method"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "Which blockchain uses 'Tendermint' consensus?",
+    options: [
+      "Cosmos",
+      "Ethereum",
+      "Solana",
+      "Avalanche"
+    ],
+    correctAnswer: 0
+  },
+  {
+    text: "What is flash loan in DeFi?",
+    options: [
+      "Uncollateralized instant loan",
+      "Long-term mortgage",
+      "Mining reward",
+      "Staking derivative"
+    ],
+    correctAnswer: 0
+  }
+]
+};
+
+
+function startQuiz() {
+    // Store questions in localStorage instead of URL
+    localStorage.setItem('currentQuiz', JSON.stringify(courseQuestions));
+    window.location.href = 'quiz.html'; // No URL parameters needed
+}
+
+// Load attempts
+function loadQuizAttempts() {
+    const attempts = JSON.parse(localStorage.getItem('quizAttempts') || '[]');
+    const courseAttempts = attempts.filter(a => a.courseId === 'blockchain');
+    
+    const container = document.getElementById('attempts-container');
+    container.innerHTML = courseAttempts.map(attempt => `
+        <div class="col-md-6 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5>${new Date(attempt.timestamp).toLocaleDateString()}</h5>
+                    <p>Score: ${attempt.score}/${attempt.totalQuestions}</p>
+                    <small class="text-muted">
+                        Time: ${Math.floor(attempt.timeTaken/60)}m ${attempt.timeTaken%60}s
+                    </small>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Initialize on load
+window.onload = loadQuizAttempts;
+</script>
+
+<!-- Footer -->
+<footer class="footer bg-dark text-white py-5">
+  <div class="container">
+      <div class="row"  >
+          <!-- Company Section -->
+          <div class="col-md-2 mb-4">
+              <h5 class="mb-3">Company</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">About</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Careers</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Affiliates</a></li>
+              </ul>
+          </div>
+
+          <!-- Resources Section -->
+          <div class="col-md-2 mb-4">
+              <h5 class="mb-3">Resources</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">Articles</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Blog</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Docs</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">EBooks</a></li>
+              </ul>
+          </div>
+
+          <!-- Courses Section -->
+          <div class="col-md-2 mb-4">
+              <h5 class="mb-3">Courses</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">AI</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Web Development</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Data Science</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Cybersecurity</a></li>
+              </ul>
+          </div>
+
+          <!-- Community Section -->
+          <div class="col-md-2 mb-4">
+              <h5 class="mb-3">Community</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">Visit Community</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Code Crew</a></li>
+              </ul>
+          </div>
+
+          <!-- Additional Section -->
+          <div class="col-md-2 mb-4">
+              <h5 class="mb-3">Support</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">Help Center</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Contact Support</a></li>
+              </ul>
+          </div>
+      </div>
+
+      <!-- Social Media Section -->
+      <div class="row mt-4" style="margin-left: -2%;">
+          <div class="col-md-12 text-center">
+              <h5 class="mb-3">Follow Us</h5>
+              <ul class="list-unstyled d-flex justify-content-center">
+                  <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-facebook-f"></i></a></li>
+                  <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-twitter"></i></a></li>
+                  <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-instagram"></i></a></li>
+                  <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-linkedin-in"></i></a></li>
+                  <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-youtube"></i></a></li>
+              </ul>
+          </div>
+      </div>
+
+      <!-- Copyright Section -->
+      <div class="row mt-4" style="margin-left: -4%;">
+          <div class="col-md-12 text-center">
+              <p class="mb-0 text-muted" style="padding-left: 20px;">&copy; 2025 Learngennie. All rights reserved.</p>
+          </div>
+      </div>
+  </div>
+</footer>
+<!-- End of Footer -->
+
+</body>
+</html>
