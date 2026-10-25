@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Page</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+
+    <!-- Poppins Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="/img/learngennie_dark.png" alt="Logo" class="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link mx-3" href="authentication/home.html">Home</a>
+                <a class="nav-link mx-3" href="resources.html">Resources</a>
+                <a class="nav-link mx-3" href="courses.html">Courses</a>
+                <a class="nav-link mx-3" href="https://discord.gg/fvkHFPuP">Community</a>
+                <a class="nav-link mx-3" href="about.html">About Us</a>
+            </div>
+        </div>
+    </div>
+  </nav>
+
+<main class="container my-5">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3 mb-4">
+      <div class="list-group blog-sidebar">
+        <a href="#" class="list-group-item list-group-item-action" data-category="web-development">Web Development</a>
+        <a href="#" class="list-group-item list-group-item-action" data-category="ai-ml">AI & Machine Learning</a>
+        <a href="#" class="list-group-item list-group-item-action" data-category="cybersecurity">Cybersecurity</a>
+        <a href="#" class="list-group-item list-group-item-action" data-category="cloud-computing">Cloud Computing</a>
+      </div>
+    </div>
+
+    <!-- Main Blog Content -->
+    <div class="col-md-9">
+      <h2>Latest Blog Posts</h2>
+      <br>
+      <div id="blog-container" class="blog-scroll">
+        <!-- Blogs will be dynamically inserted here -->
+      </div>
+    </div>
+  </div>
+</main>
+<br><br><br>
+<!-- Footer -->
+<footer class="footer bg-dark text-white py-5">
+    <div class="container">
+        <div class="row"  >
+            <!-- Company Section -->
+            <div class="col-md-2 mb-4">
+                <h5 class="mb-3">Company</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">About</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Careers</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Affiliates</a></li>
+                </ul>
+            </div>
+  
+            <!-- Resources Section -->
+            <div class="col-md-2 mb-4">
+                <h5 class="mb-3">Resources</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">Articles</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Blog</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Docs</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">EBooks</a></li>
+                </ul>
+            </div>
+  
+            <!-- Courses Section -->
+            <div class="col-md-2 mb-4">
+                <h5 class="mb-3">Courses</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">AI</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Web Development</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Data Science</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Cybersecurity</a></li>
+                </ul>
+            </div>
+  
+            <!-- Community Section -->
+            <div class="col-md-2 mb-4">
+                <h5 class="mb-3">Community</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">Visit Community</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Code Crew</a></li>
+                </ul>
+            </div>
+  
+            <!-- Additional Section -->
+            <div class="col-md-2 mb-4">
+                <h5 class="mb-3">Support</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">Help Center</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Contact Support</a></li>
+                </ul>
+            </div>
+        </div>
+  
+        <!-- Social Media Section -->
+        <div class="row mt-4" style="margin-left: -2%;">
+            <div class="col-md-12 text-center">
+                <h5 class="mb-3">Follow Us</h5>
+                <ul class="list-unstyled d-flex justify-content-center">
+                    <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-facebook-f"></i></a></li>
+                    <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-twitter"></i></a></li>
+                    <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-instagram"></i></a></li>
+                    <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+            </div>
+        </div>
+  
+        <!-- Copyright Section -->
+        <div class="row mt-4" style="margin-left: -4%;">
+            <div class="col-md-12 text-center">
+                <p class="mb-0 text-muted" style="padding-left: 20px;">&copy; 2025 Learngennie. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+  </footer>
+  <!-- End of Footer -->
+ <!-- Bootstrap 5 JS Bundle -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap JS & jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const blogData = {
+          "web-development": [
+              { 
+                  title: "Introduction to HTML & CSS", 
+                  content: "Learn how to structure web pages and style them effectively.", 
+                  details: `<p>HTML defines the content and structure of a webpage...</p>
+                  <ul>
+                      <li>Understanding HTML elements and their purpose.</li>
+                      <li>CSS selectors and how they apply styles.</li>
+                      <li>Best practices for structuring a webpage.</li>
+                  </ul>`
+              },
+              { 
+                  title: "JavaScript for Beginners", 
+                  content: "Master the fundamentals of JavaScript.", 
+                  details: `<p>JavaScript enables interactive elements on webpages...</p>
+                  <ul>
+                      <li>How to declare and use variables.</li>
+                      <li>Functions, loops, and event listeners.</li>
+                      <li>DOM manipulation to change page content dynamically.</li>
+                  </ul>`
+              },
+              { 
+                  title: "Building Responsive Websites", 
+                  content: "Make your websites mobile-friendly and responsive.", 
+                  details: `<p>Learn about CSS media queries and flexible layouts...</p>
+                  <ul>
+                      <li>Using Flexbox and Grid for modern layouts.</li>
+                      <li>How to implement responsive images.</li>
+                      <li>Making web pages adapt to different screen sizes.</li>
+                  </ul>`
+              },
+              { 
+                  title: "SEO Basics for Developers", 
+                  content: "Optimize your website for better search rankings.", 
+                  details: `<p>Learn SEO best practices to improve website visibility...</p>
+                  <ul>
+                      <li>Understanding keywords and metadata.</li>
+                      <li>Improving page speed and mobile usability.</li>
+                      <li>Using structured data and schema markup.</li>
+                  </ul>`
+              }
+          ],
+          "ai-ml": [
+              { 
+                  title: "Introduction to Artificial Intelligence", 
+                  content: "Understanding AI and its real-world applications.", 
+                  details: `<p>AI is transforming industries like healthcare and finance...</p>
+                  <ul>
+                      <li>What is Artificial Intelligence?</li>
+                      <li>Types of AI: Narrow AI vs. General AI.</li>
+                      <li>How AI is used in everyday life.</li>
+                  </ul>`
+              },
+              { 
+                  title: "Machine Learning Basics", 
+                  content: "What is Machine Learning and how does it work?", 
+                  details: `<p>Machine Learning allows computers to learn from data...</p>
+                  <ul>
+                      <li>Supervised vs. Unsupervised learning.</li>
+                      <li>Common ML algorithms and their applications.</li>
+                      <li>How ML models make predictions.</li>
+                  </ul>`
+              },
+              { 
+                  title: "Neural Networks Explained", 
+                  content: "How neural networks power AI applications.", 
+                  details: `<p>Deep Learning models use neural networks to improve AI performance...</p>
+                  <ul>
+                      <li>What are artificial neurons?</li>
+                      <li>How deep learning mimics human brain functions.</li>
+                      <li>Applications of neural networks in AI.</li>
+                  </ul>`
+              }
+          ],
+          "cybersecurity": [
+              { 
+                  title: "Cybersecurity Best Practices", 
+                  content: "Protect yourself from online threats.", 
+                  details: `<p>Cyber threats like phishing and malware are on the rise...</p>
+                  <ul>
+                      <li>How to create strong passwords.</li>
+                      <li>Ways to identify and avoid phishing scams.</li>
+                      <li>Keeping your software updated for security.</li>
+                  </ul>`
+              },
+              { 
+                  title: "Understanding Encryption", 
+                  content: "How encryption secures your data.", 
+                  details: `<p>Encryption scrambles data so only authorized users can access it...</p>
+                  <ul>
+                      <li>Types of encryption: Symmetric vs. Asymmetric.</li>
+                      <li>Why encryption is essential for online security.</li>
+                      <li>How SSL/TLS secures web communication.</li>
+                  </ul>`
+              }
+          ],
+          "cloud-computing": [
+              { 
+                  title: "Introduction to Cloud Computing", 
+                  content: "Understanding how cloud services work.", 
+                  details: `<p>Cloud computing allows access to computing resources over the internet...</p>
+                  <ul>
+                      <li>Types of cloud computing: IaaS, PaaS, SaaS.</li>
+                      <li>Advantages of using cloud services.</li>
+                      <li>Popular cloud service providers (AWS, Azure, Google Cloud).</li>
+                  </ul>`
+              },
+              { 
+                  title: "Cloud Security Best Practices", 
+                  content: "How to keep cloud environments secure.", 
+                  details: `<p>Cloud security is critical for businesses and users...</p>
+                  <ul>
+                      <li>Data encryption in the cloud.</li>
+                      <li>How to manage cloud access control.</li>
+                      <li>Understanding shared responsibility in cloud security.</li>
+                  </ul>`
+              }
+          ]
+      };
+
+      function loadBlogs(category) {
+          const blogContainer = document.getElementById("blog-container");
+          blogContainer.innerHTML = ""; // Clear previous content
+
+          if (blogData[category]) {
+              blogData[category].forEach((blog, index) => {
+                  blogContainer.innerHTML += `
+                      <div class="blog-post" onclick="toggleBlog(${index})">
+                          <h3>${blog.title}</h3>
+                          <p>${blog.content}</p>
+                          <div class="blog-panel" id="blog-panel-${index}">
+                              ${blog.details}
+                          </div>
+                      </div>
+                  `;
+              });
+          }
+      }
+
+      window.toggleBlog = function(index) {
+          document.querySelectorAll(".blog-panel").forEach(panel => panel.style.display = "none");
+          document.getElementById(`blog-panel-${index}`).style.display = "block";
+      };
+
+      loadBlogs("web-development");
+
+      document.querySelectorAll(".list-group-item").forEach(item => {
+          item.addEventListener("click", function (e) {
+              e.preventDefault();
+              loadBlogs(this.getAttribute("data-category"));
+          });
+      });
+  });
+</script>
+
+</body>
+</html>

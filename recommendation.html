@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Recommendation Quiz</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .quiz-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .question-card {
+            border-left: 4px solid #1F69F6;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .question-card:hover {
+            box-shadow: 0 4px 15px rgba(31,105,246,0.1);
+        }
+
+        .result-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            border: 2px solid #1F69F6;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+    <div class="container">
+        <!-- Brand/Logo -->
+        <a class="navbar-brand" href="#">
+            <img src="/img/learngennie_dark.png" alt="Codecademy Logo" class="logo">
+        </a>
+  
+        <!-- Hamburger Menu Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link mx-3" href="authentication/home.html">Home</a>
+                <a class="nav-link mx-3" href="resources.html">Resources</a>
+                <a class="nav-link mx-3" href="courses.html">Courses</a>
+                <a class="nav-link mx-3" href="https://discord.gg/fvkHFPuP" target="_blank">Community</a>
+                <a class="nav-link mx-3" href="about.html">About Us</a>
+            </div>
+        </div>
+    </div>
+  </nav>
+
+    <div class="container py-5">
+        <div class="quiz-container p-4 p-md-5 mb-4">
+            <h1 class="display-4 mb-4 text-center fw-bold">Find Your Perfect Course</h1>
+            
+            <form id="quizForm">
+                <!-- Question 1 -->
+                <div class="question-card">
+                    <h4 class="mb-3">What type of projects excite you most?</h4>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q1" value="web-dev">
+                        <label class="form-check-label">Building interactive websites</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q1" value="cloud">
+                        <label class="form-check-label">Managing cloud infrastructure</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q1" value="cybersecurity">
+                        <label class="form-check-label">Securing computer systems</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q1" value="ai-ml">
+                        <label class="form-check-label">Creating intelligent systems</label>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <h4 class="mb-3">Which tool interests you most?</h4>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q2" value="vs-code">
+                        <label class="form-check-label">Visual Studio Code</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q2" value="docker">
+                        <label class="form-check-label">Docker</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q2" value="kubernetes">
+                        <label class="form-check-label">Kubernetes</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q2" value="git">
+                        <label class="form-check-label">Git</label>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <h4 class="mb-3">What's your ideal work environment?</h4>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q3" value="remote">
+                        <label class="form-check-label">Remote work</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q3" value="office">
+                        <label class="form-check-label">Office setting</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q3" value="hybrid">
+                        <label class="form-check-label">Hybrid (Office + Remote)</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q3" value="startup">
+                        <label class="form-check-label">Startup culture</label>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <h4 class="mb-3">Which skill do you want to develop?</h4>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q4" value="programming">
+                        <label class="form-check-label">Advanced programming</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q4" value="data-analysis">
+                        <label class="form-check-label">Data analysis</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q4" value="leadership">
+                        <label class="form-check-label">Leadership & management</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q4" value="design">
+                        <label class="form-check-label">UI/UX design</label>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <h4 class="mb-3">What industry appeals to you most?</h4>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q5" value="tech">
+                        <label class="form-check-label">Technology</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q5" value="finance">
+                        <label class="form-check-label">Finance</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q5" value="healthcare">
+                        <label class="form-check-label">Healthcare</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q5" value="gaming">
+                        <label class="form-check-label">Gaming</label>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <button type="button" class="btn btn-primary px-5 py-2" onclick="calculateResult()">Get Recommendation</button>
+                </div>
+            </form>
+
+            <div id="result" class="result-card p-4 mt-4" style="display: none;">
+                <h3 class="mb-3">Recommended Course:</h3>
+                <p id="courseSuggestion" class="lead fw-bold mb-3 text-primary"></p>
+                <a href="courses.html"><button id="redirectBtn" class="btn btn-primary">View Course Details</button></a>
+            </div>
+        </div>
+    </div>
+<!-- Footer -->
+<footer class="footer bg-dark text-white py-5">
+    <div class="container">
+        <div class="row"  >
+            <!-- Company Section -->
+            <div class="col-md-2 mb-4">
+                <h5 class="mb-3">Company</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">About</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Careers</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Affiliates</a></li>
+                </ul>
+            </div>
+  
+            <!-- Resources Section -->
+            <div class="col-md-2 mb-4">
+                <h5 class="mb-3">Resources</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">Articles</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Blog</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Docs</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">EBooks</a></li>
+                </ul>
+            </div>
+  
+            <!-- Courses Section -->
+            <div class="col-md-2 mb-4">
+                <h5 class="mb-3">Courses</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">AI</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Web Development</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Data Science</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Cybersecurity</a></li>
+                </ul>
+            </div>
+  
+            <!-- Community Section -->
+            <div class="col-md-2 mb-4">
+                <h5 class="mb-3">Community</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">Visit Community</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Code Crew</a></li>
+                </ul>
+            </div>
+  
+            <!-- Additional Section -->
+            <div class="col-md-2 mb-4">
+                <h5 class="mb-3">Support</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">Help Center</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Contact Support</a></li>
+                </ul>
+            </div>
+        </div>
+  
+        <!-- Social Media Section -->
+        <div class="row mt-4" style="margin-left: -2%;">
+            <div class="col-md-12 text-center">
+                <h5 class="mb-3">Follow Us</h5>
+                <ul class="list-unstyled d-flex justify-content-center">
+                    <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-facebook-f"></i></a></li>
+                    <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-twitter"></i></a></li>
+                    <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-instagram"></i></a></li>
+                    <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li class="me-3"><a href="#" class="text-white text-decoration-none"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+            </div>
+        </div>
+  
+        <!-- Copyright Section -->
+        <div class="row mt-4" style="margin-left: -4%;">
+            <div class="col-md-12 text-center">
+                <p class="mb-0 text-muted" style="padding-left: 20px;">&copy; 2025 Learngennie. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+  </footer>
+  <!-- End of Footer -->
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function calculateResult() {
+            const courses = {
+                'web-dev': 0,
+                'cloud': 0,
+                'cybersecurity': 0,
+                'ai-ml': 0
+            };
+
+            // Get all selected answers
+            const answers = document.querySelectorAll('input[type="radio"]:checked');
+            answers.forEach(answer => {
+                courses[answer.value]++;
+            });
+
+            // Find recommended course
+            let maxScore = 0;
+            let recommendedCourse = '';
+            for (const [course, score] of Object.entries(courses)) {
+                if (score > maxScore) {
+                    maxScore = score;
+                    recommendedCourse = course;
+                }
+            }
+
+            // Show results
+            const resultDiv = document.getElementById('result');
+            const suggestion = document.getElementById('courseSuggestion');
+            const redirectBtn = document.getElementById('redirectBtn');
+            
+            resultDiv.style.display = 'block';
+            
+            const courseDetails = {
+                'web-dev': {
+                    name: 'Web Development',
+                    desc: 'Master full-stack web development with modern technologies',
+                    url: '/courses/web-dev'
+                },
+                'cloud': {
+                    name: 'Cloud Computing',
+                    desc: 'Learn cloud infrastructure and deployment strategies',
+                    url: '/courses/cloud'
+                },
+                'cybersecurity': {
+                    name: 'Cybersecurity',
+                    desc: 'Become an expert in digital security and ethical hacking',
+                    url: '/courses/cybersecurity'
+                },
+                'ai-ml': {
+                    name: 'AI & Machine Learning',
+                    desc: 'Develop intelligent systems and predictive models',
+                    url: '/courses/ai-ml'
+                }
+            };
+
+            if (recommendedCourse) {
+                suggestion.textContent = `${courseDetails[recommendedCourse].name} - ${courseDetails[recommendedCourse].desc}`;
+                redirectBtn.onclick = () => window.location.href = courseDetails[recommendedCourse].url;
+            } else {
+                suggestion.textContent = "Please answer all questions to get a proper recommendation!";
+                redirectBtn.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
